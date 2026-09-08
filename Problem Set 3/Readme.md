@@ -222,3 +222,17 @@ Por eso, al cerrar y volver a ejecutar el programa, **los datos registrados perm
 * Módulo `unicodedata`
 
 ---
+
+##  Administración de préstamos
+
+breve descripción:
+
+* Crear una tabla **Préstamo** relacionada con **Usuario** y **Libro**.
+* Verificar que el libro tenga **copias disponibles** antes de realizar el préstamo.
+* Controlar que cada usuario tenga como máximo **3 libros prestados simultáneamente**, mediante un **trigger** o validación.
+* Registrar la fecha del préstamo y devolución.
+* Actualizar la cantidad disponible del libro al prestar y devolver.
+* Utilizar **transacciones (`BEGIN`, `COMMIT`, `ROLLBACK`)** para garantizar que todas las operaciones se realicen correctamente o se reviertan en caso de error.
+
+No se considera penalidad por devolución fuera de plazo.
+
