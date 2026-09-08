@@ -1,450 +1,224 @@
-\#  Sistema de Gestión de Bibliotecas
-
-
+#  Sistema de Gestión de Bibliotecas
 
 El sistema permite administrar libros, autores y usuarios desde una consola.
 
+---
 
-
-\---
-
-
-
-\##  Estructura del proyecto
-
-
+##  Estructura del proyecto
 
 ```text
-
-&#x20;biblioteca
-
+ biblioteca
 │
-
 ├──  biblioteca.py
-
 ├──  conexion.py
-
 └──  biblioteca.db
-
 ```
 
+### `biblioteca.py`
 
-
-\### `biblioteca.py`
-
-
-
-Es el \*\*archivo principal\*\* del proyecto.
-
-
+Es el **archivo principal** del proyecto.
 
 Contiene únicamente:
 
-
-
-\* Inicio del programa.
-
-\* Menú principal.
-
-\* Ejecución de las funciones.
-
-
+* Inicio del programa.
+* Menú principal.
+* Ejecución de las funciones.
 
 Desde aquí se ejecuta todo el sistema.
 
+### `conexion.py`
 
+Contiene la **lógica del sistema**:
 
-\### `conexion.py`
+* Conexión con SQLite.
+* Creación automática de la base de datos.
+* Creación de las tablas.
+* Consultas SQL.
+* Registro de libros.
+* Registro de usuarios.
+* Búsqueda de libros.
+* Mostrar catálogo y usuarios.
 
+### `biblioteca.db`
 
-
-Contiene la \*\*lógica del sistema\*\*:
-
-
-
-\* Conexión con SQLite.
-
-\* Creación automática de la base de datos.
-
-\* Creación de las tablas.
-
-\* Consultas SQL.
-
-\* Registro de libros.
-
-\* Registro de usuarios.
-
-\* Búsqueda de libros.
-
-\* Mostrar catálogo y usuarios.
-
-
-
-\### `biblioteca.db`
-
-
-
-Es la \*\*base de datos SQLite\*\*.
-
-
+Es la **base de datos SQLite**.
 
 Se genera automáticamente al ejecutar `biblioteca.py` por primera vez.
 
-
-
 Contiene las tablas:
 
-
-
 ```text
-
 Autor
-
 Libro
-
 Usuario
-
 ```
 
+---
 
-
-\---
-
-
-
-\##  ¿Cómo funciona?
-
-
+##  ¿Cómo funciona?
 
 Al ejecutar:
 
-
-
 ```bash
-
 python biblioteca.py
-
 ```
-
-
 
 el programa primero ejecuta:
 
-
-
 ```python
-
-crear\_base\_datos()
-
+crear_base_datos()
 ```
-
-
 
 Esta función:
 
+1. Se conecta a SQLite.
+2. Crea `biblioteca.db` si no existe.
+3. Crea las tablas `Autor`, `Libro` y `Usuario`.
+4. Inicia el menú principal.
 
+Las tablas utilizan **claves primarias y foráneas** para mantener la relación entre autores y libros.
 
-1\. Se conecta a SQLite.
+---
 
-2\. Crea `biblioteca.db` si no existe.
+##  ¿Cómo vamos a ejecutar el proyecto?
 
-3\. Crea las tablas `Autor`, `Libro` y `Usuario`.
-
-4\. Inicia el menú principal.
-
-
-
-Las tablas utilizan \*\*claves primarias y foráneas\*\* para mantener la relación entre autores y libros.
-
-
-
-\---
-
-
-
-\##  ¿Cómo vamos a ejecutar el proyecto?
-
-
-
-\### 1. Abrir la carpeta del proyecto
-
-
+### 1. Abrir la carpeta del proyecto
 
 Abrir la carpeta `biblioteca` en Visual Studio Code.
 
-
-
-\### 2. Abrir la terminal
-
-
+### 2. Abrir la terminal
 
 En VS Code:
 
+**Terminal → New Terminal**
 
-
-\*\*Terminal → New Terminal\*\*
-
-
-
-\### 3. Ejecutar
-
-
+### 3. Ejecutar
 
 ```bash
-
 python biblioteca.py
-
 ```
-
-
 
 Aparecerá el menú:
 
-
-
 ```text
-
+================================
+ SISTEMA DE GESTIÓN DE BIBLIOTECA
 ================================
 
-&#x20;SISTEMA DE GESTIÓN DE BIBLIOTECA
-
-================================
-
-
-
-1\. Agregar libro
-
-2\. Mostrar catálogo
-
-3\. Buscar libro
-
-4\. Registrar usuario
-
-5\. Mostrar usuarios
-
-6\. Salir
-
+1. Agregar libro
+2. Mostrar catálogo
+3. Buscar libro
+4. Registrar usuario
+5. Mostrar usuarios
+6. Salir
 ```
 
+---
 
+##  Ejemplo de prueba
 
-\---
-
-
-
-\##  Ejemplo de prueba
-
-
-
-\### Agregar un libro
-
-
+### Agregar un libro
 
 Seleccionar:
 
-
-
 ```text
-
 1
-
 ```
-
-
 
 Ingresar:
 
-
-
 ```text
-
 ISBN: 9780307476463
-
 Título: Cien años de soledad
-
 Año: 1967
-
 Autor: Gabriel García Márquez
-
 Fecha de nacimiento: 1927-03-06
-
 Copias: 5
-
 ```
-
-
 
 Luego seleccionar:
 
-
-
 ```text
-
 2
-
 ```
-
-
 
 para comprobar que el libro aparece en el catálogo.
 
+---
 
-
-\---
-
-
-
-\##  Buscar un libro
-
-
+##  Buscar un libro
 
 Seleccionar:
 
-
-
 ```text
-
 3
-
 ```
-
-
 
 y escribir:
 
-
-
 ```text
-
 garcia
-
 ```
 
-
-
-El sistema buscará coincidencias tanto por \*\*título como por autor\*\*.
-
-
+El sistema buscará coincidencias tanto por **título como por autor**.
 
 Además, la búsqueda ignora los acentos, por lo que se puede escribir `garcia` aunque el nombre almacenado sea `García`.
 
+---
 
-
-\---
-
-
-
-\##  Registrar un usuario
-
-
+##  Registrar un usuario
 
 Seleccionar:
 
-
-
 ```text
-
 4
-
 ```
-
-
 
 Ejemplo:
 
-
-
 ```text
-
 DNI: 71234567
-
 Nombre: Christopher
-
 Apellido: Paul
-
 Email: christopher@gmail.com
-
 Teléfono: 987654321
-
 ```
-
-
 
 El DNI es único, por lo que no se permite registrar dos usuarios con el mismo DNI.
 
+---
 
-
-\---
-
-
-
-\##  Funcionalidades
-
-
+##  Funcionalidades
 
 | Opción | Función           |
-
 | ------ | ----------------- |
-
 | 1      | Agregar libro     |
-
 | 2      | Mostrar catálogo  |
-
 | 3      | Buscar libro      |
-
 | 4      | Registrar usuario |
-
 | 5      | Mostrar usuarios  |
-
 | 6      | Salir             |
 
+---
 
-
-\---
-
-
-
-\##  Persistencia de datos
-
-
+##  Persistencia de datos
 
 Los datos se almacenan directamente en:
 
-
-
 ```text
-
 biblioteca.db
-
 ```
 
+Por eso, al cerrar y volver a ejecutar el programa, **los datos registrados permanecen guardados**.
 
+---
 
-Por eso, al cerrar y volver a ejecutar el programa, \*\*los datos registrados permanecen guardados\*\*.
+##  Tecnologías utilizadas
 
+* Python
+* SQLite
+* Visual Studio Code
+* Módulo `sqlite3`
+* Módulo `unicodedata`
 
-
-\---
-
-
-
-\##  Tecnologías utilizadas
-
-
-
-\* Python
-
-\* SQLite
-
-\* Visual Studio Code
-
-\* Módulo `sqlite3`
-
-\* Módulo `unicodedata`
-
-
-
-\---
-
-
-
+---
