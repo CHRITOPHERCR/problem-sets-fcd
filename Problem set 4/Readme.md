@@ -17,7 +17,7 @@ Las bases se relacionan mediante `id_viv_imp_f` y se consideran únicamente los 
 
 Se calcula el porcentaje de niños de 0 a 5 años cuyo baño no está conectado a la red pública de desagüe.
 
-**Resultado: 62.14 %**
+**Resultado: 62.23 %**
 
 ### 2. Afiliación a algún seguro de salud
 
