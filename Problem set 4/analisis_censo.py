@@ -75,7 +75,7 @@ SELECT
     ) AS porcentaje
 FROM datos_censo
 WHERE c5_p4_1 >= 0
-  AND c5_p4_1 < 5
+  AND c5_p4_1 <= 5
 """).fetchone()
 
 print("\nINDICADOR 1")
@@ -193,5 +193,3 @@ print("Tasa de empleo")
 print("Población de 15 a 64 años:", resultado_3[0])
 print("Población empleada:", resultado_3[1])
 print("Tasa de empleo:", resultado_3[2], "%")
-
-
